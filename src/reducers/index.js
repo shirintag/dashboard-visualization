@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
+
 import apiReducer from './apiReducer';
-import clickReducer from './clickReducer';
+import metricsReducer from './metricsReducer';
 
 const rootReducer = combineReducers({
     apiReducer,
-    clickReducer
+    metricsReducer
 });
 
 export default rootReducer;

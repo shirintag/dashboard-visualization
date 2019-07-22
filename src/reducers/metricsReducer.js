@@ -1,4 +1,4 @@
-import { ActionTypes } from '../actions/clickActions';
+import { ActionTypes } from '../actions/metricsActions';
 import { ActionTypes as ActionTypesApi } from '../actions/apiActions'
 
 const initialState = {
@@ -7,9 +7,9 @@ const initialState = {
     blue_metric: 0
 };
 
-const example = (state = initialState, action) => {
+const metricsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ActionTypes.CHANGE_METRIC:
+        case ActionTypes.UPDATE_METRICS:
             return { ...action.payload }
         case ActionTypesApi.API_CALL:
             let sorted = action.payload.metrics.sort((a, b) => b.year - a.year)
@@ -19,4 +19,4 @@ const example = (state = initialState, action) => {
     }
 }
 
-export default example;
+export default metricsReducer;

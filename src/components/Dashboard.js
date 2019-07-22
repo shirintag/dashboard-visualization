@@ -1,9 +1,12 @@
 import React from 'react';
-import Share from './Share'
-import './Dashboard.css'
 import { connect } from 'react-redux';
-import { changeMetric } from '../actions/clickActions';
+
+import { changeMetrics } from '../actions/metricsActions';
 import { fetchApi } from '../actions/apiActions';
+
+import CirclePercentile from './CirclePercentile'
+
+import './Dashboard.css'
 
 
 class Dashboard extends React.Component {
