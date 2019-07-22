@@ -1,5 +1,4 @@
 import { ActionTypes } from '../actions/apiActions';
-import data from '../vai-challange-input.json'
 
 const initialState = {
     data: { metrics: [] }

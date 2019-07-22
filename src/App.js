@@ -1,9 +1,9 @@
 import React from 'react';
-import './App.css';
-import data from './vai-challange-input.json'
+
 import Menu from './components/Menu'
 import Dashboard from './components/Dashboard'
 
+import './style/App.css';
 
 function App() {
   return (
