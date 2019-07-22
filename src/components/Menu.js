@@ -6,16 +6,18 @@ import './Menu.css'
 function Menu(props) {
     return (
         <div className="menu">
-            <div className="profile-image">
-                {props.image}
+            <div className="profile-container">
+                <div className="profile-image">
+                    {props.image}
+                </div>
+                <div className="profile-name">
+                    {props.name}
+                </div>
             </div>
-            <div className="profile-name">
-                {props.name}
-            </div>
-            <div>
-                <div>Saldo: {props.saldo}</div>
-                <div>Sent: {props.sent}</div>
-                <div>Overdue: {props.overdue}</div>
+            <div className="profile-data-container">
+                <div className="profile-data">Saldo: {props.saldo}</div>
+                <div className="profile-data">Sent: {props.sent}</div>
+                <div className="profile-data">Overdue: {props.overdue}</div>
             </div>
         </div>
     );
