@@ -1,4 +1,65 @@
+.dashboard-container {
+    padding: 50px;
+    width: 75%;
+    max-width: 750px;
+}
+
+h1 {
+    text-align: right;
+    margin: 0 50px 50px 0;
+}
+
 .units {
     height: 20px;
+    margin: 10px 5px;
+    border: 1px solid black;
     background-color: gray;
+}
+
+.row:nth-child(2n) .units {
+    background-color: darkgray;
+}
+
+.row:nth-last-child(2)>.units-wrapper {
+    border-bottom: 1px solid black;
+    /*width: 150px;*/
+}
+
+.units-wrapper {
+    width: 100%;
+    border-left: 1px solid black;
+}
+
+.year {
+    width: 70px;
+}
+
+.yearly-units-container {
+    width: 500px;
+}
+
+.yearly-units-container>.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.yearly-units-container>.row>.year {
+    align-self: center;
+    line-height: 20px;
+    margin-right: 5px;
+}
+
+.yearly-units-container>.row>.legend {
+    margin: 10px;
+}
+
+.yearly-units-container>.row:last-child {
+    flex-direction: row-reverse;
+}
+
+hr {
+    float: left;
+
+    width: 450px;
 }

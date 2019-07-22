@@ -15,43 +15,54 @@ class Dashboard extends React.Component {
     }
 
     render() {
-        let props = this.props;
+        const
+            props = this.props,
+            maxUnits = props.metrics.length && props.metrics.map(x => x.units).reduce((a, b) => Math.max(a, b)),
+            maxLength = 400,
+            c = maxLength / maxUnits;
+
         return (
-            <div className="dashboard">
+            <div className="dashboard-container">
                 <div className="row">
                     <h1>Dashboard</h1>
                 </div>
-                <div className="shares-container">
-                    <Share percentage={props.orange_metric}></Share>
-                    <Share percentage={props.gray_metric}></Share>
-                    <Share percentage={props.blue_metric}></Share>
+                <div className="circlePercentiles-container">
+                    <CirclePercentile color={'orange'} percentage={props.orange_metric} />
+                    <CirclePercentile color={'gray'} percentage={props.gray_metric} />
+                    <CirclePercentile color={'blue'} percentage={props.blue_metric} />
                 </div>
-                <div className="yearly-units">
-                    {props.metrics.map(x =>
-                        <div className="row">
-                            <div className="year" onClick={() => props.changeMetric(x)}>{x.year}</div>
-                            <div className="units" style={{ width: x.units * 0.5 }}></div>
-                        </div>
+                <div className="yearly-units-container">
+                    {props.metrics.map((x, index) => {
+                        return (
+                            <div key={index} className="row">
+                                <a href="#year" className="year" onClick={() => props.changeMetrics(x)}>{x.year}</a>
+                                <div className="units-wrapper">
+                                    <div className="units" style={{ width: x.units * c }}></div>
+                                </div>
+                            </div>
+
+                        )
+                    }
                     )}
                     <div className="row">
-                        <div className="legend">units</div>
+                        <div className="legend">Units</div>
                     </div>
                 </div>
-            </div>
+            </div >
         );
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
     return ({
-        ...state.clickReducer,
+        ...state.metricsReducer,
         metrics: state.apiReducer.data.metrics.sort((a, b) => b.year - a.year)
     });
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     fetchApi: () => dispatch(fetchApi()),
-    changeMetric: (x) => dispatch(changeMetric(x))
+    changeMetrics: (x) => dispatch(changeMetrics(x))
 });
 
 export default connect(
